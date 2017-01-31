@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8" />
+        <title>Group Kākā Facial Recognition Project</title>
+        <script type="text/javascript" src="/phaser-2.6.2/build/phaser.min.js"></script>
+    </head>
+
+
+
+	<body>	
+		<script type="text/javascript" src="game.js"></script>
+
+		<div id="phaser-example"></div>
+
+		<div style="position:relative; pointer-events: none; overflow: hidden; width:480px; height:660px;" max-width="480px">
+			
+			<!-- <div id="video_container" style="overflow: hidden; width: 480px;"> -->
+				<video id="video"
+					style="display:none;
+							/*position:fixed;*/
+							/*top:0px;*/
+							/*left:0px;*/
+							/*max-width:100%;*/
+
+							/*width:480px;*/
+							/*height:660px;*/
+							/*overflow: hidden;*/
+							
+						    transform: rotateY(180deg);
+						    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+						    -moz-transform:rotateY(180deg); /* Firefox */
+
+							z-index: 0;"></video>
+			<!-- </div> -->
+
+			<img id="man" src="allBlacks/face.png"
+				style="
+					display:none;
+					z-index: 1;
+					position:absolute;
+				    top: 0;
+				    /*left: ;*/
+
+				    /*max-width:100%;*/
+					/*height:auto;*/"
+			/>
+
+			<img id="woman" src="blackFerns/face.png"
+				style="
+					display:none;
+					z-index: 1;
+					position:absolute;
+				    top: 0;
+				    /*left: 50%;*/
+
+				    /*max-width:100%;
+					height:auto;*/"
+			/>
+		</div>
+
+	</body>
+</html>
