@@ -3,9 +3,13 @@
 
 **Authors**
 Tim Marcus - Github: Tinytimmmy
+
 Matt Schmittle - Github: Schmittlema
-Ashley Gold - Github: AshleyGold - Email: angold@udel.edu
-Natalie Rubin - Github: Natdh
+
+Ashley Gold - Github: ashleygold - Email: angold@udel.edu
+
+Natalie Rubin - Github: natdh
+
 David Geron-Neubauer - Github: CommandoGN - Email: davidgn@udel.edu
 
 
