@@ -75,6 +75,7 @@ var start;
 var render = false;
 /////////////////////////////
 
+//Resets the game
 function resetGame() {
 	game.world.removeAll();
 
@@ -103,7 +104,7 @@ function resetGame() {
 	video.style.visibility = "hidden";
 }
 
-
+//Loads images
 function preload() {
 	// Outlines for getting the correct face size
 	game.load.image('manFace', 'allBlacks/face.png');
@@ -143,7 +144,7 @@ function preload() {
 	game.load.image('allBlacks', 'all_blacks.gif');	
 	game.load.image('blackFerns', 'black_ferns.jpg');
 }
-
+//Adds sprites and tect to opening screen
 function create() {
 
 
@@ -175,7 +176,7 @@ function create() {
 	// console.log("Create", chooseBF, chooseBF.kill);
 }
 
-// ToDo: combine these two, maybe give it a boolean/enum to distinguish between the options
+//Click function for all blacks. Calls create1_5
 function actionClickOne(obj, pointer, someBool){
 	// console.log("ClickOne", chooseBF, chooseBF.kill);
 	document.getElementById('man').style.display = "";
@@ -186,7 +187,7 @@ function actionClickOne(obj, pointer, someBool){
 	face = true;
 	create1_5();
 }
-
+//Click function for black ferns. Calls create1_5
 function actionClickTwo(obj, pointer, someBool){
 	document.getElementById('woman').style.display = "";
 
@@ -197,6 +198,7 @@ function actionClickTwo(obj, pointer, someBool){
 	create1_5();
 }
 
+//Kills beginning screen. Sets up and starts camera.
 function create1_5(){
 	text.kill();
 	text2.kill();
@@ -225,10 +227,6 @@ function create1_5(){
 	phaser.style.position = "absolute";
 	phaser.style.display = "";
 	// game.paused = true;
-
-
-
-
 
 	video = document.querySelector('#video');
 	pictureTaken = false;
@@ -273,6 +271,7 @@ function create1_5(){
     text5 = game.add.text(55, 570, 'Make sure you line your face up with the outline!', { font: "25px Haettenschweiler", fill: "#ffffff"});
 }
 
+//Kills video screen and starts point screen
 function create2() {
 	background = sprite; // Attempt at making it so we can add bubbles to the webcam picture
 	text5.kill();
@@ -298,7 +297,7 @@ function create2() {
 	next.scale.setTo(0.3, 0.3);
 }
 
-
+//Adds crosshair to screen for facial recognition
 function addBubble(obj, pointer) {
 	if(numBubs >= MAX_BUBS) {
 		return;
@@ -337,7 +336,7 @@ function bubbleListener(obj, pointer) {
 	}
 }
 
-
+//Called when clicked next button. Change instructions and adds bubble location to array and locks it.
 function buttonClicked(obj, pointer) {
 	// console.log("Clicked button");
 	if(bubs != null) {
@@ -399,7 +398,7 @@ function buttonClicked(obj, pointer) {
 	}
 }
 
-
+//Converts bubbleArray to array of distances between certain bubbles.
 function convertBubbleToDist(buttonArray) {
 	var userDist =
 		[distance(buttonArray[0].position, buttonArray[1].position),
@@ -436,15 +435,7 @@ function distance(xy1, xy2) {
 	return Math.sqrt(Math.pow(xy2.x - xy1.x, 2) + Math.pow(xy2.y - xy1.y, 2)) / background.width;;
 }
 
-
-
-// compare: [][]
-	// [person][facepoint distance]
-		// last is name
-// user: []
-	// facepoint distances from the webcam
-
-// var lookAlike; // moved to inside the function
+//Compares distance array with all players faces and ouputs which player you look like
 function comparePoints(user, compare) {
 	var difference = createArray(compare.length, user.length);
 	// for(var i = 0; i > compare.length; i++)
@@ -498,6 +489,8 @@ function comparePoints(user, compare) {
 ////////////////
 // Camera stuff
 ////////////////
+
+//Takes photo by hiding video and showing image
 function takeFunc(){
 	cont = game.add.button(250,500,'continue',continueFunc,this);
 
@@ -513,6 +506,7 @@ function takeFunc(){
 	pictureTaken = true;
 }
 
+//Hides image and shows video for a retake.
 function retakeFunc(){
 	cont.kill();
 
@@ -528,6 +522,7 @@ function retakeFunc(){
 }
 
 var videoStream;
+//Stops video stream and calls create2 for placing bubbles
 function continueFunc(){
 	document.getElementById('man').style.display = "none";
 	document.getElementById('woman').style.display = "none";
@@ -546,7 +541,7 @@ function continueFunc(){
 
 	create2();
 }
-
+//Deprecated due to new camera code
 function render () {
 	if (render){
 		if (!(pictureTaken)){
@@ -577,7 +572,7 @@ function render () {
 
 
 
-
+//Array creation stuff
 // --vvv-- not ours --vvv--
 
 Array.prototype.repeat = function(what, L){
